@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Raising Heldscalla</title><link href="http://blog.heldscal.la/" rel="alternate"></link><link href="http://blog.heldscal.la/feeds/retro.atom.xml" rel="self"></link><id>http://blog.heldscal.la/</id><updated>2015-06-07T20:00:00+02:00</updated><entry><title>Analog Video Synchronisation</title><link href="http://blog.heldscal.la/video-sync.html" rel="alternate"></link><updated>2015-06-07T20:00:00+02:00</updated><author><name>Roger Braun</name></author><id>tag:blog.heldscal.la,2015-06-07:video-sync.html</id><summary type="html">&lt;p&gt;This is a short one. One of the nice things about living in a big city is that you can find somewhat rare devices like a Sony PVM RGB monitor. These things were used in professional video production, but now they are sought after by people playing games on old computers and gaming consoles. These monitors have one of the best CRT images available. They are also super heavy. I nearly broke my back bringing it home...&lt;/p&gt;
+&lt;p&gt;&lt;img alt="The PVM in action" src="http://blog.heldscal.la/images/pvm.jpg" /&gt;&lt;/p&gt;
+&lt;p&gt;Now, one of the harder parts of this exercise is actually getting the signal to the monitor. Many PVMs only have BNC inputs, a connector you might remember from mid-90s LAN parties. The monitor will need four signals: Red, green, blue and sync. What's sync? It's the signal that's telling the monitor when a new frame or line starts. All video signals have this, but with composite video (i.e. 'the yellow cable') it's integrated with the image signal, so you don't need an extra cable.&lt;/p&gt;
+&lt;p&gt;If you want to learn everything there is about sync, you should visit &lt;a href="http://retrorgb.com/sync.html"&gt;RetroRGB&lt;/a&gt;. Here, I just want to talk about the two different kinds of sync signals that you can encounter:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Composite Video: The 'yellow cable' I've mentioned before also carries the sync signal. Your monitor may be able to sync on this signal, but not all can do it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Composite Sync: This is &lt;em&gt;just&lt;/em&gt; the sync part of the composite video signal. There is no image data being transmitted. Some monitors need this signal. You can get it from composite video by using a sync stripper circuit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;My advice would be to just try if your monitor can sync with composite video. If it can not, you can easily add a sync stripper circuit after the fact.&lt;/p&gt;</summary><category term="RGB"></category><category term="Sony PVM"></category><category term="CRT"></category></entry></feed>

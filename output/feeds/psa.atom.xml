@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Raising Heldscalla</title><link href="http://blog.heldscal.la/" rel="alternate"></link><link href="http://blog.heldscal.la/feeds/psa.atom.xml" rel="self"></link><id>http://blog.heldscal.la/</id><updated>2015-01-21T00:00:00+01:00</updated><entry><title>Real-time Anki import from your browser with Rikaisama on Arch Linux</title><link href="http://blog.heldscal.la/anki-rikaisama-arch.html" rel="alternate"></link><updated>2015-01-21T00:00:00+01:00</updated><author><name>Roger Braun</name></author><id>tag:blog.heldscal.la,2015-01-21:anki-rikaisama-arch.html</id><summary type="html">&lt;p&gt;One of the best tools for learning Japanese (or any language, really) is the spaced repetition program &lt;a href="https://en.wikipedia.org/wiki/Anki_%28software%29"&gt;Anki&lt;/a&gt;. It is available for a lot of platforms, it's free and open source (GPL3) and can synchronize your learning progress across devices.&lt;/p&gt;
+&lt;p&gt;Another great tool is the Firefox add-on &lt;a href="http://rikaisama.sourceforge.net/"&gt;Rikaisama&lt;/a&gt;. Based on the more popular &lt;a href="https://addons.mozilla.org/en-US/firefox/addon/rikaichan/"&gt;Rikaichan&lt;/a&gt;, it's a dictionary for looking up Japanese words directly in your browser. Rikaisama adds a lot more advanced functionality, like using EPWING dictionaries, querying Japanese web dictionaries and the feature I'm going to talk about here, adding words to your Anki deck automatically, complete with reading and translation.&lt;/p&gt;
+&lt;p&gt;If you do a lot of reading on the web, this can nearly completely eliminate the tedious process of creating an Anki deck. I find that, in my experience, it also encourages you to add more words to your deck than you would have without it, because it's just a button press and not several copy-and-pastes.&lt;/p&gt;
+&lt;p&gt;On the technical side, this works by installing an &lt;a href="https://ankiweb.net/shared/info/2512410601"&gt;Anki plugin&lt;/a&gt; that makes Anki listen on a local UDP port for new cards. Rikaisama in turn starts a Python script that writes the cards to this UDP port when called.&lt;/p&gt;
+&lt;p&gt;And here's where the problem begins for Arch Linux users.  Most distribution ship with Python 2 as a standard, but Arch Linux uses the slightly incompatible Python 3. You can install &lt;a href="https://wiki.archlinux.org/index.php/Python"&gt;Python 2&lt;/a&gt; on Arch Linux, but the script inside of Rikaisama will still refer to just 'python', which is Python 3 on Arch.
+It's easy to modify Rikaisama to use the right version, though. Rikaisama is provided as an .xpi file, which is a packed Firefox add-on. You can unpack the file (which is in fact a zip file) with 7zip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;7z x Rikaisama_v20.3.xpi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You quick grep will tell you which file to change:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;grep -r python
+udp/RealTimeImport_UDP_Client.py:#!/usr/bin/env python2
+udp/run_udp.sh:python &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$3&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;As you see, udp/run_udp.sh doesn't use the correct python version. Change the line to read&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;python2 &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt; &lt;span class="nv"&gt;$2&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$3&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and you're done. Now you can re-pack the file for use in Firefox. In the folder with the source files, pack the files with 7zip:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;$ &lt;/span&gt;7z a ../Rikaisama.fixed.xpi * -r
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;You can now use Rikaisama.fixed.xpi to install the add-on, it will use the correct python version and you can finally import directly into Anki.&lt;/p&gt;
+&lt;p&gt;You can find a &lt;a href="https://github.com/rogerbraun/rikaisama/raw/master/Rikaisama_v20.3_arch.xpi"&gt;version of Rikaisama&lt;/a&gt; containing this change on &lt;a href="http://github.com/rogerbraun/rikaisama"&gt;GitHub&lt;/a&gt;.&lt;/p&gt;</summary><category term="Arch Linux"></category><category term="Python 3"></category><category term="Japanese"></category><category term="Firefox"></category></entry></feed>
