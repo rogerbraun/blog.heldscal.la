@@ -16,7 +16,7 @@ assert binary_or(0b10000000000000000, 0b0000000000000001) == 0b1000000000000001
 
 If you are as bad at counting consecutive zeroes as I am, you'll probably have missed the error in the statement above[^1]: The first number has one to many zeroes. In Ruby, you can use underscores in all numbers to make them easier to read. This is how the above code would look like if Elixir supported this:
 
-```elixir
+```ruby
 assert binary_or(0b1000_0000_0000_0000_0, 0b0000_0000_0000_0001) == 0b1000_0000_0000_0001
 ```
 
