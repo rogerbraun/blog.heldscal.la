@@ -1,9 +1,8 @@
 Title: Hacking Elixir's Syntax
-Date: 2015-06-07 20:00
+Date: 2015-06-16 17:00
 Category: Elixir
 Slug: elixir-hacking
 Tags: elixir, hacking, functional programming
-Status: draft
 Author: Roger Braun
 Summary: Elixir won't allow us to use underscores in binary numbers. Let's add this feature.
 
@@ -15,7 +14,7 @@ While toying around with the language, I needed to test the operation of a funct
 assert binary_or(0b10000000000000000, 0b0000000000000001) == 0b1000000000000001
 ```
 
-If you are as bad at counting consecutive zeroes as I am, you'll probably have missed the error in the statement above: The first number has one to many zeroes. In Ruby, you can use underscores in all numbers to make them easier to read. This is how the above code would look like if Elixir supported this:
+If you are as bad at counting consecutive zeroes as I am, you'll probably have missed the error in the statement above[^1]: The first number has one to many zeroes. In Ruby, you can use underscores in all numbers to make them easier to read. This is how the above code would look like if Elixir supported this:
 
 ```elixir
 assert binary_or(0b1000_0000_0000_0000_0, 0b0000_0000_0000_0001) == 0b1000_0000_0000_0001
@@ -163,6 +162,8 @@ Finding my way around Elixir's codebase was surprisingly easy. The source files 
 
 This also shows how important it is for a project to have a comprehensive test suite. Thanks to the existing specs, it was easy to find the relevant pieces of code I needed to work on.
 
-This exercise resulted in a [Pull Request](https://github.com/elixir-lang/elixir/pull/3395), so let's see if this feature makes it's way into Elixir!
+This exercise resulted in a [Pull Request](https://github.com/elixir-lang/elixir/pull/3395) and a slightly different version got merged, so look forward to this feature in upcoming versions of Elixir!
 
 Please send me an [Email](mailto:blog@rogerbraun.net) if you want to comment!
+
+[^1]: In fact, I made an error while producing this example, accidentally making it correct...
