@@ -1,6 +1,6 @@
 Title: Hacking Elixir's Syntax
 Date: 2015-06-16 17:00
-Category: Elixir
+Category: Code
 Slug: elixir-hacking
 Tags: elixir, hacking, functional programming
 Author: Roger Braun
