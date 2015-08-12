@@ -1,4 +1,4 @@
-Title: Hacking Elixir's Syntax - Nochmal weil's so schön ist.
+Title: Hacking Elixir's Syntax - Nochmal weil's so schön ist..
 Date: 2015-06-16 17:00
 Category: Code
 Slug: elixir-hacking
